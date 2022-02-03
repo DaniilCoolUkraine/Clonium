@@ -4,35 +4,54 @@ using UnityEngine.UI;
 
 public class Stepwise : MonoBehaviour
 {
-    [SerializeField]
-    private Image _buttonColor;
     
     private MapManager _tile;
 
+    //field to place dots
     private Tilemap _map;
     
+    //clicked tile on grid
     private TileBase _clickedBackgroundTile;
+    
+    //clicked tile on field
     private TileBase _clickedForegroundTile;
     
+    //num of steps
     short _stepNum = 0;
+    
+    //indicate color of player
+    [SerializeField]
+    private Image _buttonColor;
     
     void Start()
     {
+        //initial color set
         _buttonColor.color = Color.cyan;
+        
+        //get component from gameController
         _tile = gameObject.GetComponent<MapManager>();
+        
+        //get map from map manager
         _map = _tile.GetMap();
     }
     
     void Update()
     {
-        
+        //get Back tile from map manager
         _clickedBackgroundTile = _tile.GetBackTile();
+        //get Front tile from map manager
         _clickedForegroundTile = _tile.GetFrontTile();
+        
+        /*
+         * TODO
+         * here is beautiful decision showed in this video https://youtu.be/rHRbBXWT3Kc
+         */
         
         if (_clickedBackgroundTile != null)
         {
             if (_clickedForegroundTile != null)
             {
+                //blue step
                 if (_stepNum == 0)
                 {
                     if (BlueFinder())
@@ -49,6 +68,7 @@ public class Stepwise : MonoBehaviour
                     else
                         _stepNum++;
                 }
+                //green step
                 else if (_stepNum == 1)
                 {
                     if (GreenFinder())
@@ -65,6 +85,7 @@ public class Stepwise : MonoBehaviour
                     else
                         _stepNum++;
                 }
+                //red step
                 else if (_stepNum == 2)
                 {
                     if (RedFinder())
@@ -81,6 +102,7 @@ public class Stepwise : MonoBehaviour
                     else
                         _stepNum++;
                 }
+                //yellow step
                 else if (_stepNum == 3)
                 {
                     if (YellowFinder())
@@ -102,6 +124,9 @@ public class Stepwise : MonoBehaviour
         }
     }
 
+    /*
+     * here is functions to check if there is color on a field
+     */
     public bool BlueFinder()
     {
         for (int i = -5; i < 5; i++)
@@ -112,10 +137,12 @@ public class Stepwise : MonoBehaviour
                 
                 if (_map.GetTile(pos) != null)
                     if (_map.GetTile(pos).name.Contains("Blue"))
-                        return true;
+                        //return true if found and stop 
+                        return true;                       
             }
         }
-        return false;
+        //return false if not found
+        return false; 
     }
     public bool GreenFinder()
     {

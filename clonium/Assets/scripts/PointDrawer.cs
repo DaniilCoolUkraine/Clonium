@@ -14,15 +14,16 @@ public class PointDrawer : MonoBehaviour
     private TileBase[] _availableTile;
     private TileBase[] _dots;
 
+    //enum to find winner
     public enum Winner
     {
         Blue,
         Green,
         Red,
         Yellow,
-        No
+        No          //there is no winner now
     }
-
+    
     private Winner _winner = Winner.No;
     
     void Start()
@@ -98,10 +99,13 @@ public class PointDrawer : MonoBehaviour
             }
         }        
     }
+    //functions to draw top/down/right/left dots 
     private void UpperDot(Vector3Int pos)
     {
+        //set the direction
         Vector3Int cell = pos + Vector3Int.up;
         
+        //check if it is the end of the field
         if (_background.GetTile(cell) != null)
         {
             if (_map.GetTile(pos).name.Contains("Blue"))
