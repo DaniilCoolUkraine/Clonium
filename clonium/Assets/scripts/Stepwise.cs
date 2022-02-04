@@ -21,12 +21,12 @@ public class Stepwise : MonoBehaviour
     
     //indicate color of player
     [SerializeField]
-    private Image _buttonColor;
+    private Image _stepColor;
     
     void Start()
     {
         //initial color set
-        _buttonColor.color = Color.cyan;
+        _stepColor.color = Color.cyan;
         
         //get component from gameController
         _tile = gameObject.GetComponent<MapManager>();
@@ -56,7 +56,7 @@ public class Stepwise : MonoBehaviour
                 {
                     if (BlueFinder())
                     {
-                        _buttonColor.color = Color.cyan;
+                        _stepColor.color = Color.cyan;
                         if (_clickedForegroundTile.name.Contains("Blue"))
                         {
                             _stepNum++;
@@ -73,7 +73,7 @@ public class Stepwise : MonoBehaviour
                 {
                     if (GreenFinder())
                     {
-                        _buttonColor.color = Color.green;
+                        _stepColor.color = Color.green;
                         if (_clickedForegroundTile.name.Contains("Green"))
                         {
                             _stepNum++;
@@ -90,7 +90,7 @@ public class Stepwise : MonoBehaviour
                 {
                     if (RedFinder())
                     {
-                        _buttonColor.color = Color.red;
+                        _stepColor.color = Color.red;
                         if (_clickedForegroundTile.name.Contains("Red"))
                         {
                             _stepNum++;
@@ -107,7 +107,7 @@ public class Stepwise : MonoBehaviour
                 {
                     if (YellowFinder())
                     {
-                        _buttonColor.color = Color.yellow;
+                        _stepColor.color = Color.yellow;
                         if (_clickedForegroundTile.name.Contains("Yellow"))
                         {
                             _stepNum++;
