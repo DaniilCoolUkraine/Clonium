@@ -22,6 +22,10 @@ public class MapManager : MonoBehaviour
 	
 	private TileBase _clickedBackgroundTile;
 	private TileBase _clickedForegroundTile;
+	
+	[Header("Sounds")]
+	[SerializeField] 
+	private AudioSource _tileClickSound;
 
 	private Vector3Int _gridPos;
 
@@ -29,6 +33,9 @@ public class MapManager : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
+			
+			_tileClickSound.Play();
+			
 			Vector3 mousPos = VectorClamp(Camera.main.ScreenToWorldPoint(Input.mousePosition), -4, 3.5f, -5, 5);
 			_gridPos = _background.WorldToCell(mousPos);
 

@@ -22,7 +22,7 @@ public class Stepwise : MonoBehaviour
     //indicate color of player
     [SerializeField]
     private Image _stepColor;
-    
+
     void Start()
     {
         //initial color set
@@ -46,82 +46,82 @@ public class Stepwise : MonoBehaviour
          * TODO
          * here is beautiful decision showed in this video https://youtu.be/rHRbBXWT3Kc
          */
-        
-        if (_clickedBackgroundTile != null)
+
+        if (_clickedBackgroundTile == null)
+            return;
+        if (_clickedForegroundTile == null)
+            return;
+
+        //blue step
+        if (_stepNum == 0)
         {
-            if (_clickedForegroundTile != null)
+            if (BlueFinder())
             {
-                //blue step
-                if (_stepNum == 0)
+                _stepColor.color = Color.cyan;
+                if (_clickedForegroundTile.name.Contains("Blue"))
                 {
-                    if (BlueFinder())
-                    {
-                        _stepColor.color = Color.cyan;
-                        if (_clickedForegroundTile.name.Contains("Blue"))
-                        {
-                            _stepNum++;
-                            _tile.BlueDraw(_tile.GetPosition(), _clickedForegroundTile.name);
-                        }
-                        else
-                            _stepNum = 0;
-                    }
-                    else
-                        _stepNum++;
+                    _stepNum++;
+                    _tile.BlueDraw(_tile.GetPosition(), _clickedForegroundTile.name);
                 }
-                //green step
-                else if (_stepNum == 1)
-                {
-                    if (GreenFinder())
-                    {
-                        _stepColor.color = Color.green;
-                        if (_clickedForegroundTile.name.Contains("Green"))
-                        {
-                            _stepNum++;
-                            _tile.GreenDraw(_tile.GetPosition(), _clickedForegroundTile.name);
-                        }
-                        else
-                            _stepNum = 1;
-                    }
-                    else
-                        _stepNum++;
-                }
-                //red step
-                else if (_stepNum == 2)
-                {
-                    if (RedFinder())
-                    {
-                        _stepColor.color = Color.red;
-                        if (_clickedForegroundTile.name.Contains("Red"))
-                        {
-                            _stepNum++;
-                            _tile.RedDraw(_tile.GetPosition(), _clickedForegroundTile.name);
-                        }
-                        else
-                            _stepNum = 2;
-                    }
-                    else
-                        _stepNum++;
-                }
-                //yellow step
-                else if (_stepNum == 3)
-                {
-                    if (YellowFinder())
-                    {
-                        _stepColor.color = Color.yellow;
-                        if (_clickedForegroundTile.name.Contains("Yellow"))
-                        {
-                            _stepNum++;
-                            _tile.YellowDraw(_tile.GetPosition(), _clickedForegroundTile.name);
-                        }
-                        else
-                            _stepNum = 3;
-                    }
-                    else
-                        _stepNum++;
-                }
-                else _stepNum = 0;
+                else
+                    _stepNum = 0;
             }
+            else
+                _stepNum++;
         }
+        //green step
+        else if (_stepNum == 1)
+        {
+            if (GreenFinder())
+            {
+                _stepColor.color = Color.green;
+                if (_clickedForegroundTile.name.Contains("Green"))
+                {
+                    _stepNum++;
+                    _tile.GreenDraw(_tile.GetPosition(), _clickedForegroundTile.name);
+                }
+                else
+                    _stepNum = 1;
+            }
+            else
+                _stepNum++;
+        }
+        //red step
+        else if (_stepNum == 2)
+        {
+            if (RedFinder())
+            {
+                _stepColor.color = Color.red;
+                if (_clickedForegroundTile.name.Contains("Red"))
+                {
+                    _stepNum++;
+                    _tile.RedDraw(_tile.GetPosition(), _clickedForegroundTile.name);
+                }
+                else
+                    _stepNum = 2;
+            }
+            else
+                _stepNum++;
+        }
+        //yellow step
+        else if (_stepNum == 3)
+        {
+            if (YellowFinder())
+            {
+                _stepColor.color = Color.yellow;
+                if (_clickedForegroundTile.name.Contains("Yellow"))
+                {
+                    _stepNum++;
+                    _tile.YellowDraw(_tile.GetPosition(), _clickedForegroundTile.name);
+                }
+                else
+                    _stepNum = 3;
+            }
+            else
+                _stepNum++;
+        }
+        else 
+            _stepNum = 0;
     }
 
     /*
