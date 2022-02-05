@@ -14,6 +14,11 @@ public class PointDrawer : MonoBehaviour
     private TileBase[] _availableTile;
     private TileBase[] _dots;
 
+    [Space(10)]
+    [Header("Sounds")]
+    [SerializeField] 
+    private AudioSource _explosionSound;
+
     //enum to find winner
     public enum Winner
     {
@@ -50,6 +55,7 @@ public class PointDrawer : MonoBehaviour
                     //blue
                     if (_map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[0])
                     {
+                        _explosionSound.Play();
                         UpperDot(pos);
                         LowerDot(pos);
                         LeftDot(pos);
@@ -59,6 +65,7 @@ public class PointDrawer : MonoBehaviour
                     //green
                     else if (_map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[1])
                     {
+                        _explosionSound.Play();
                         UpperDot(pos);
                         LowerDot(pos);
                         LeftDot(pos); 
@@ -68,6 +75,7 @@ public class PointDrawer : MonoBehaviour
                     //red
                     else if (_map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[2])
                     { 
+                        _explosionSound.Play();
                         UpperDot(pos); 
                         LowerDot(pos); 
                         LeftDot(pos); 
@@ -77,6 +85,7 @@ public class PointDrawer : MonoBehaviour
                     //yellow
                     else if (_map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[3])
                     { 
+                        _explosionSound.Play();
                         UpperDot(pos); 
                         LowerDot(pos);
                         LeftDot(pos);

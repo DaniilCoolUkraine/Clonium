@@ -12,6 +12,12 @@ public class UiText : MonoBehaviour
 
 	private void Update()
 	{
+		
+		if (_winner.GetWinner()==PointDrawer.Winner.No)
+			return;
+		
+		_text.gameObject.SetActive(true);
+		
 		if (_winner.GetWinner() == PointDrawer.Winner.Blue)
 			_text.text = "Blue Win";
 		else if (_winner.GetWinner() == PointDrawer.Winner.Green)
@@ -23,4 +29,6 @@ public class UiText : MonoBehaviour
 		else
 			_text.text = "";
 	}
+
+	public Text GetText() => _text;
 }
