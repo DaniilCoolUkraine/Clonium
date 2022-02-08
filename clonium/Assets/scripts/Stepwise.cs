@@ -23,6 +23,9 @@ public class Stepwise : MonoBehaviour
     [SerializeField]
     private Image _stepColor;
 
+    //variables to store state of color existence
+    private bool _blueFind = true, _greenFind = true, _redFind = true, _yellowFind = true;
+    
     void Start()
     {
         //initial color set
@@ -52,10 +55,19 @@ public class Stepwise : MonoBehaviour
         if (_clickedForegroundTile == null)
             return;
 
+        if (_blueFind)
+            _blueFind = BlueFinder();
+        if (_greenFind)
+            _greenFind = GreenFinder();
+        if (_redFind)
+            _redFind = RedFinder();
+        if (_yellowFind)
+            _yellowFind = YellowFinder();
+        
         //blue step
         if (_stepNum == 0)
         {
-            if (BlueFinder())
+            if (_blueFind)
             {
                 _stepColor.color = Color.cyan;
                 if (_clickedForegroundTile.name.Contains("Blue"))
@@ -72,7 +84,7 @@ public class Stepwise : MonoBehaviour
         //green step
         else if (_stepNum == 1)
         {
-            if (GreenFinder())
+            if (_greenFind)
             {
                 _stepColor.color = Color.green;
                 if (_clickedForegroundTile.name.Contains("Green"))
@@ -89,7 +101,7 @@ public class Stepwise : MonoBehaviour
         //red step
         else if (_stepNum == 2)
         {
-            if (RedFinder())
+            if (_redFind)
             {
                 _stepColor.color = Color.red;
                 if (_clickedForegroundTile.name.Contains("Red"))
@@ -106,7 +118,7 @@ public class Stepwise : MonoBehaviour
         //yellow step
         else if (_stepNum == 3)
         {
-            if (YellowFinder())
+            if (_yellowFind)
             {
                 _stepColor.color = Color.yellow;
                 if (_clickedForegroundTile.name.Contains("Yellow"))
