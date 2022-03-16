@@ -1,3 +1,4 @@
+using Unity.Profiling.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -44,11 +45,6 @@ public class Stepwise : MonoBehaviour
         _clickedBackgroundTile = _tile.GetBackTile();
         //get Front tile from map manager
         _clickedForegroundTile = _tile.GetFrontTile();
-        
-        /*
-         * TODO
-         * here is beautiful decision showed in this video https://youtu.be/rHRbBXWT3Kc
-         */
 
         if (_clickedBackgroundTile == null)
             return;
@@ -201,5 +197,9 @@ public class Stepwise : MonoBehaviour
         }
         return false;
     }
-
+    public bool GetBlueState() => _blueFind;
+    public bool GetGreenState() => _greenFind;
+    public bool GetRedState() => _redFind;
+    public bool GetYellowState() => _yellowFind;
+    
 }

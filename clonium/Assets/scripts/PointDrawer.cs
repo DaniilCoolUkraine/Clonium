@@ -43,70 +43,138 @@ public class PointDrawer : MonoBehaviour
 
     void Update()
     {
-        for (int i = -5; i < 5; i++)
+        // for (int i = -5; i < 5; i++)
+        // {
+        //     for (int j = -10; j < 10; j++)
+        //     {
+        //         Vector3Int pos = new Vector3Int(i, j, 0);
+        //         if (_map.GetTile(pos) != null)
+        //         {
+        //             //clear 4 dot tiles and fill other
+        //             
+        //             //blue
+        //             if (_map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[0])
+        //             {
+        //                 _explosionSound.Play();
+        //                 UpperDot(pos);
+        //                 LowerDot(pos);
+        //                 LeftDot(pos);
+        //                 RightDot(pos);
+        //                 _map.SetTile(new Vector3Int(i, j, 0), null);
+        //             }
+        //             //green
+        //             else if (_map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[1])
+        //             {
+        //                 _explosionSound.Play();
+        //                 UpperDot(pos);
+        //                 LowerDot(pos);
+        //                 LeftDot(pos); 
+        //                 RightDot(pos); 
+        //                 _map.SetTile(new Vector3Int(i, j, 0), null);
+        //             }
+        //             //red
+        //             else if (_map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[2])
+        //             { 
+        //                 _explosionSound.Play();
+        //                 UpperDot(pos); 
+        //                 LowerDot(pos); 
+        //                 LeftDot(pos); 
+        //                 RightDot(pos); 
+        //                 _map.SetTile(new Vector3Int(i, j, 0), null);
+        //             }
+        //             //yellow
+        //             else if (_map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[3])
+        //             { 
+        //                 _explosionSound.Play();
+        //                 UpperDot(pos); 
+        //                 LowerDot(pos);
+        //                 LeftDot(pos);
+        //                 RightDot(pos);
+        //                 _map.SetTile(new Vector3Int(i, j, 0), null);
+        //             }
+        //             
+        //             //find if there is only one color
+        //             if (!_aliveCheck.BlueFinder() && !_aliveCheck.GreenFinder() && !_aliveCheck.RedFinder())
+        //                 _winner = Winner.Yellow;
+        //             else if(!_aliveCheck.BlueFinder() && !_aliveCheck.GreenFinder() && !_aliveCheck.YellowFinder())
+        //                 _winner = Winner.Red;
+        //             else if(!_aliveCheck.BlueFinder() && !_aliveCheck.RedFinder() && !_aliveCheck.YellowFinder())
+        //                 _winner = Winner.Green;
+        //             else if (!_aliveCheck.GreenFinder() && !_aliveCheck.RedFinder() && !_aliveCheck.YellowFinder())
+        //                 _winner = Winner.Blue;
+        //             else 
+        //                 _winner = Winner.No;
+        //         }
+        //     }
+        // }        
+
+        for (int gap = 5; gap > 0; gap /= 2)
         {
-            for (int j = -10; j < 10; j++)
+            for (int i = -5; i < 5; i += gap)
             {
-                Vector3Int pos = new Vector3Int(i, j, 0);
-                if (_map.GetTile(pos) != null)
+                for (int j = -10; j < 10; j += gap)
                 {
-                    //clear 4 dot tiles and fill other
-                    
-                    //blue
-                    if (_map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[0])
+                    Vector3Int pos = new Vector3Int(i, j, 0);
+                    if (_map.GetTile(pos) != null)
                     {
-                        _explosionSound.Play();
-                        UpperDot(pos);
-                        LowerDot(pos);
-                        LeftDot(pos);
-                        RightDot(pos);
-                        _map.SetTile(new Vector3Int(i, j, 0), null);
+                        //clear 4 dot tiles and fill other
+
+                        //blue
+                        if (_aliveCheck.GetBlueState() && _map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[0])
+                        {
+                            _explosionSound.Play();
+                            UpperDot(pos);
+                            LowerDot(pos);
+                            LeftDot(pos);
+                            RightDot(pos);
+                            _map.SetTile(new Vector3Int(i, j, 0), null);
+                        }
+                        //green
+                        else if (_aliveCheck.GetGreenState() && _map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[1])
+                        {
+                            _explosionSound.Play();
+                            UpperDot(pos);
+                            LowerDot(pos);
+                            LeftDot(pos);
+                            RightDot(pos);
+                            _map.SetTile(new Vector3Int(i, j, 0), null);
+                        }
+                        //red
+                        else if (_aliveCheck.GetRedState() && _map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[2])
+                        {
+                            _explosionSound.Play();
+                            UpperDot(pos);
+                            LowerDot(pos);
+                            LeftDot(pos);
+                            RightDot(pos);
+                            _map.SetTile(new Vector3Int(i, j, 0), null);
+                        }
+                        //yellow
+                        else if (_aliveCheck.GetYellowState() && _map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[3])
+                        {
+                            _explosionSound.Play();
+                            UpperDot(pos);
+                            LowerDot(pos);
+                            LeftDot(pos);
+                            RightDot(pos);
+                            _map.SetTile(new Vector3Int(i, j, 0), null);
+                        }
+
+                        //find if there is only one color
+                        if (!_aliveCheck.GetBlueState() && !_aliveCheck.GetGreenState() && !_aliveCheck.GetRedState())
+                            _winner = Winner.Yellow;
+                        else if (!_aliveCheck.GetBlueState() && !_aliveCheck.GetGreenState() && !_aliveCheck.GetYellowState())
+                            _winner = Winner.Red;
+                        else if (!_aliveCheck.GetBlueState() && !_aliveCheck.GetRedState() && !_aliveCheck.GetYellowState())
+                            _winner = Winner.Green;
+                        else if (!_aliveCheck.GetGreenState() && !_aliveCheck.GetRedState() && !_aliveCheck.GetYellowState())
+                            _winner = Winner.Blue;
+                        else
+                            _winner = Winner.No;
                     }
-                    //green
-                    else if (_map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[1])
-                    {
-                        _explosionSound.Play();
-                        UpperDot(pos);
-                        LowerDot(pos);
-                        LeftDot(pos); 
-                        RightDot(pos); 
-                        _map.SetTile(new Vector3Int(i, j, 0), null);
-                    }
-                    //red
-                    else if (_map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[2])
-                    { 
-                        _explosionSound.Play();
-                        UpperDot(pos); 
-                        LowerDot(pos); 
-                        LeftDot(pos); 
-                        RightDot(pos); 
-                        _map.SetTile(new Vector3Int(i, j, 0), null);
-                    }
-                    //yellow
-                    else if (_map.GetTile(new Vector3Int(i, j, 0)) == _availableTile[3])
-                    { 
-                        _explosionSound.Play();
-                        UpperDot(pos); 
-                        LowerDot(pos);
-                        LeftDot(pos);
-                        RightDot(pos);
-                        _map.SetTile(new Vector3Int(i, j, 0), null);
-                    }
-                    
-                    //find if there is only one color
-                    if (!_aliveCheck.BlueFinder() && !_aliveCheck.GreenFinder() && !_aliveCheck.RedFinder())
-                        _winner = Winner.Yellow;
-                    else if(!_aliveCheck.BlueFinder() && !_aliveCheck.GreenFinder() && !_aliveCheck.YellowFinder())
-                        _winner = Winner.Red;
-                    else if(!_aliveCheck.BlueFinder() && !_aliveCheck.RedFinder() && !_aliveCheck.YellowFinder())
-                        _winner = Winner.Green;
-                    else if (!_aliveCheck.GreenFinder() && !_aliveCheck.RedFinder() && !_aliveCheck.YellowFinder())
-                        _winner = Winner.Blue;
-                    else 
-                        _winner = Winner.No;
                 }
             }
-        }        
+        }
     }
     //functions to draw top/down/right/left dots 
     private void UpperDot(Vector3Int pos)
