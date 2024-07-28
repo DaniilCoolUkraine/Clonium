@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tiles
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 045898375ebf3e14bbd0adea4ed4bd9b, type: 3}
+    totalSpriteSurfaceArea: 550800
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 6eb65c51235e22643ae0c850abab3f4c, type: 3}
+  - {fileID: 21300000, guid: a8bae1819e2e12647aaef5605aa7858e, type: 3}
+  - {fileID: 21300000, guid: 2233874550e26164ebbd610673838460, type: 3}
+  - {fileID: 21300000, guid: 317a2155760e9f448933c6676b4b8005, type: 3}
+  - {fileID: 21300000, guid: ad2f0c46c9ac58040bf22ff9bded99a7, type: 3}
+  - {fileID: 21300000, guid: ae3afc4641b0b914788923716ba91ae0, type: 3}
+  - {fileID: 21300000, guid: feb6b8387a317c84c9ed185746f6d5b5, type: 3}
+  - {fileID: 21300000, guid: 29eeb8f80c6fb514ca8f18a232766295, type: 3}
+  - {fileID: 21300000, guid: 3443605992425e743aded8edfb6af320, type: 3}
+  - {fileID: 21300000, guid: 5c8571ea846ebf7439d546910b7c0bb6, type: 3}
+  - {fileID: 21300000, guid: 782a15ea311f24741a5ffd2e629cf9a8, type: 3}
+  - {fileID: 21300000, guid: 5469c73ba093c4c45a991af1978ce47e, type: 3}
+  - {fileID: 21300000, guid: c3ebef0d260c080469f70debbe644872, type: 3}
+  - {fileID: 21300000, guid: 9a49597d1f52d384fb0f826d860779ba, type: 3}
+  - {fileID: 21300000, guid: 295de59d98fd55e4ea2f0ccac563b074, type: 3}
+  - {fileID: 21300000, guid: d258b5dd73b01fb4aa3519ca01078b68, type: 3}
+  - {fileID: 21300000, guid: 65c8526f0b8cfc8468121228426390df, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Blue_2
+  - Red_2
+  - Yellow_2
+  - emptyTile
+  - Blue_4
+  - Yellow_3
+  - Red_1
+  - Blue_3
+  - Green_1
+  - Red_3
+  - Green_3
+  - Yellow_4
+  - Blue_1
+  - Red_4
+  - Green_4
+  - Green_2
+  - Yellow_1
+  m_RenderDataMap: {}
+  m_Tag: Tiles
+  m_IsVariant: 0
